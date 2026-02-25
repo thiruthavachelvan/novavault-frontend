@@ -130,9 +130,14 @@ function ForgotPassword() {
                 </form>
 
                 {message && (
-                    <p className="text-center mt-3">
-                        {message}
-                    </p>
+                    <div className="text-center mt-3" style={{ color: "white" }}>
+                        <p>{message}</p>
+                        {message.includes("sent") && (
+                            <p style={{ fontSize: "0.85rem", opacity: 0.8 }}>
+                                (If you don't see it, please check your <b>spam folder</b>)
+                            </p>
+                        )}
+                    </div>
                 )}
 
                 <p className="text-center mt-3" style={{ color: "white" }}>
