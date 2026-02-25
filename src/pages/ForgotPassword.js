@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function ForgotPassword() {
 
@@ -133,6 +134,10 @@ function ForgotPassword() {
                         {message}
                     </p>
                 )}
+
+                <p className="text-center mt-3" style={{ color: "white" }}>
+                    Don't have an account? <Link to="/register" style={{ color: "#ffffff", fontWeight: "bold" }}>Register here</Link>
+                </p>
 
             </div>
 
