@@ -15,7 +15,7 @@ function ResetPassword() {
 
         try {
 
-            const response = await axios.post(`https://novavault-backend.onrender.com/api/auth/reset-password/${token}`, { password });
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/reset-password/${token}`, { password });
 
             setMessage(response.data.message);
 
