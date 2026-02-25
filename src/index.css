@@ -38,8 +38,6 @@ body {
 
 }
 
-/* Floating circles */
-
 body::before,
 body::after {
   content: "";
@@ -48,6 +46,14 @@ body::after {
   filter: blur(100px);
   z-index: 0;
   pointer-events: none;
+}
+
+@media (max-width: 768px) {
+
+  body::before,
+  body::after {
+    display: none;
+  }
 }
 
 body::before {
@@ -76,8 +82,8 @@ body::after {
 
 .glass-card {
 
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 
   border-radius: 20px;
 
@@ -176,13 +182,13 @@ body::after {
 }
 
 .form-control::placeholder {
-  color: rgba(255,255,255,0.85);
-  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .form-control:focus {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  box-shadow: 0 0 15px rgba(0,198,255,0.6);
-  border: 1px solid rgba(255,255,255,0.5);
+  box-shadow: 0 0 15px rgba(0, 198, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
