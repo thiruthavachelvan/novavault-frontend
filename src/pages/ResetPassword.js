@@ -20,9 +20,8 @@ function ResetPassword() {
             setMessage(response.data.message);
 
         } catch (error) {
-
-            setMessage("Error resetting password");
-
+            const errorMsg = error.response?.data?.message || "Error resetting password";
+            setMessage(errorMsg);
         }
 
     };

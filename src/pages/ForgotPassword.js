@@ -17,9 +17,8 @@ function ForgotPassword() {
             setMessage(response.data.message);
 
         } catch (error) {
-
-            setMessage("Error sending email");
-
+            const errorMsg = error.response?.data?.message || "Error sending email";
+            setMessage(errorMsg);
         }
     };
 
