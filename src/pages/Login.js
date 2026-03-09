@@ -1,31 +1,29 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function ForgotPassword() {
-
+function Login() {
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
-
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/forgot-password`, { email });
-
-
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, { email, password });
             setMessage(response.data.message);
-
+            // In a real app we would store the token, but for this task we just verify login works
+            setTimeout(() => {
+                // Could navigate to a dashboard here
+            }, 2000);
         } catch (error) {
-            const errorMsg = error.response?.data?.message || "Error sending email";
+            const errorMsg = error.response?.data?.message || "Login failed";
             setMessage(errorMsg);
         }
     };
 
     return (
         <div className="center-wrapper">
-
             <div
                 style={{
                     textAlign: "center",
@@ -41,10 +39,7 @@ function ForgotPassword() {
                         gap: "12px"
                     }}
                 >
-                    <span style={{ fontSize: "30px" }}>
-                        🚀
-                    </span>
-
+                    <span style={{ fontSize: "30px" }}>🚀</span>
                     <h1
                         style={{
                             fontWeight: "700",
@@ -58,54 +53,27 @@ function ForgotPassword() {
                         NovaVault
                     </h1>
                 </div>
-
-                <p
-                    style={{
-                        color: "#ffffff",
-                        textAlign: "center",
-                        marginTop: "5px",
-                        textShadow: "0 2px 10px rgba(0,0,0,0.35)",
-                        fontWeight: "500"
-                    }}
-                >
-                    Secure Password Recovery Platform
-                </p>
             </div>
 
             <div className="glass-card">
-
                 <h2
                     style={{
                         color: "#ffffff",
                         fontWeight: "700",
                         textAlign: "center",
-                        marginBottom: "10px",
+                        marginBottom: "20px",
                         textShadow: "0 3px 15px rgba(0,0,0,0.4)"
                     }}
                 >
-                    Forgot Password
+                    Login
                 </h2>
 
-                <p
-                    style={{
-                        textAlign: "center",
-                        color: "#ffffff",
-                        marginBottom: "20px",
-                        textShadow: "0 2px 10px rgba(0,0,0,0.35)",
-                        fontWeight: "500"
-                    }}
-                >
-                    Enter your email to receive reset link
-                </p>
-
                 <form onSubmit={handleSubmit}>
-
                     <div className="mb-3">
-
                         <input
                             type="email"
                             className="form-control"
-                            placeholder="Enter your email"
+                            placeholder="Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -113,44 +81,52 @@ function ForgotPassword() {
                                 background: "rgba(255,255,255,0.15)",
                                 border: "1px solid rgba(255,255,255,0.3)",
                                 color: "#ffffff",
-                                textShadow: "0 2px 8px rgba(0,0,0,0.4)",
-                                backdropFilter: "blur(10px)",
                                 borderRadius: "10px",
-                                padding: "12px",
-                                fontSize: "16px"
+                                padding: "12px"
                             }}
                         />
+                    </div>
 
+                    <div className="mb-3">
+                        <input
+                            type="password"
+                            className="form-control"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            style={{
+                                background: "rgba(255,255,255,0.15)",
+                                border: "1px solid rgba(255,255,255,0.3)",
+                                color: "#ffffff",
+                                borderRadius: "10px",
+                                padding: "12px"
+                            }}
+                        />
                     </div>
 
                     <button className="btn glass-btn w-100">
-                        Send Reset Link
+                        Login
                     </button>
-
                 </form>
 
                 {message && (
                     <div className="text-center mt-3" style={{ color: "white" }}>
                         <p>{message}</p>
-                        {message.includes("sent") && (
-                            <p style={{ fontSize: "0.85rem", opacity: 0.8 }}>
-                                (If you don't see it, please check your <b>spam folder</b>)
-                            </p>
-                        )}
                     </div>
                 )}
 
-                <p className="text-center mt-3" style={{ color: "white" }}>
-                    Already have an account? <Link to="/login" style={{ color: "#ffffff", fontWeight: "bold" }}>Login here</Link>
-                </p>
-                <p className="text-center mt-1" style={{ color: "white" }}>
-                    Don't have an account? <Link to="/register" style={{ color: "#ffffff", fontWeight: "bold" }}>Register here</Link>
-                </p>
-
+                <div className="text-center mt-3" style={{ color: "white" }}>
+                    <p>
+                        <Link to="/" style={{ color: "#ffffff", fontWeight: "bold" }}>Forgot Password?</Link>
+                    </p>
+                    <p>
+                        Don't have an account? <Link to="/register" style={{ color: "#ffffff", fontWeight: "bold" }}>Register here</Link>
+                    </p>
+                </div>
             </div>
-
         </div>
     );
 }
 
-export default ForgotPassword;
+export default Login;

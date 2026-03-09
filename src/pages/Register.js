@@ -128,7 +128,7 @@ function Register() {
                 {message && <p className="text-center mt-3" style={{ color: "white" }}>{message}</p>}
 
                 <p className="text-center mt-3" style={{ color: "white" }}>
-                    Already have an account? <Link to="/" style={{ color: "#ffffff", fontWeight: "bold" }}>Login / Reset</Link>
+                    Already have an account? <Link to="/login" style={{ color: "#ffffff", fontWeight: "bold" }}>Login here</Link>
                 </p>
             </div>
         </div>
