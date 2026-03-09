@@ -25,111 +25,58 @@ function Register() {
 
     return (
         <div className="center-wrapper">
-            <div
-                style={{
-                    textAlign: "center",
-                    marginBottom: "25px",
-                    color: "white",
-                }}
-            >
-                <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        gap: "12px",
-                    }}
-                >
-                    <span style={{ fontSize: "30px" }}>🚀</span>
-                    <h1
-                        style={{
-                            fontWeight: "700",
-                            letterSpacing: "1px",
-                            margin: 0,
-                            color: "#ffffff",
-                            textAlign: "center",
-                            textShadow: "0 3px 15px rgba(0,0,0,0.4)",
-                        }}
-                    >
-                        NovaVault
-                    </h1>
+            <div className="logo-container">
+                <div className="logo-glow">
+                    <span style={{ fontSize: "32px", fontWeight: "800", color: "#050a14" }}>V</span>
                 </div>
-                <p
-                    style={{
-                        color: "#ffffff",
-                        textAlign: "center",
-                        marginTop: "5px",
-                        textShadow: "0 2px 10px rgba(0,0,0,0.35)",
-                        fontWeight: "500",
-                    }}
-                >
-                    Create your account to get started
+                <h1 className="premium-title">NovaVault</h1>
+                <p style={{ marginTop: "10px", fontSize: "1.1rem" }}>
+                    Advanced Security & Account Privacy
                 </p>
             </div>
 
             <div className="glass-card">
-                <h2
-                    style={{
-                        color: "#ffffff",
-                        fontWeight: "700",
-                        textAlign: "center",
-                        marginBottom: "10px",
-                        textShadow: "0 3px 15px rgba(0,0,0,0.4)",
-                    }}
-                >
-                    Register
-                </h2>
+                <h2>Account Creation</h2>
+                <p style={{ textAlign: "center", marginBottom: "30px", fontSize: "0.95rem" }}>
+                    Establish your digital identity to begin securing your assets.
+                </p>
 
                 <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
+                    <div className="mb-4">
                         <input
                             type="email"
                             className="form-control"
-                            placeholder="Enter your email"
+                            placeholder="Email address"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            style={{
-                                background: "rgba(255,255,255,0.15)",
-                                border: "1px solid rgba(255,255,255,0.3)",
-                                color: "#ffffff",
-                                textShadow: "0 2px 8px rgba(0,0,0,0.4)",
-                                backdropFilter: "blur(10px)",
-                                borderRadius: "10px",
-                                padding: "12px",
-                                fontSize: "16px",
-                            }}
                         />
                     </div>
-                    <div className="mb-3">
+                    <div className="mb-4">
                         <input
                             type="password"
                             className="form-control"
-                            placeholder="Enter your password"
+                            placeholder="Primary Decryption Key"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            style={{
-                                background: "rgba(255,255,255,0.15)",
-                                border: "1px solid rgba(255,255,255,0.3)",
-                                color: "#ffffff",
-                                textShadow: "0 2px 8px rgba(0,0,0,0.4)",
-                                backdropFilter: "blur(10px)",
-                                borderRadius: "10px",
-                                padding: "12px",
-                                fontSize: "16px",
-                            }}
                         />
                     </div>
 
-                    <button className="btn glass-btn w-100">Register</button>
+                    <button className="btn glass-btn w-100">Initialize Account</button>
                 </form>
 
-                {message && <p className="text-center mt-3" style={{ color: "white" }}>{message}</p>}
+                {message && (
+                    <p className="text-center mt-3" style={{ color: "#c5a059", fontSize: "0.9rem" }}>
+                        {message}
+                    </p>
+                )}
 
-                <p className="text-center mt-3" style={{ color: "white" }}>
-                    Already have an account? <Link to="/login" style={{ color: "#ffffff", fontWeight: "bold" }}>Login here</Link>
-                </p>
+                <div className="mt-5 pt-3" style={{ borderTop: "1px solid rgba(197, 160, 89, 0.1)", textAlign: "center" }}>
+                    <p style={{ fontSize: "0.85rem" }}>
+                        Already established? <Link to="/login">Sign In</Link>
+                    </p>
+                </div>
             </div>
         </div>
     );

@@ -45,43 +45,55 @@ function ResetPassword() {
 
     return (
         <div className="center-wrapper">
+            <div className="logo-container">
+                <div className="logo-glow">
+                    <span style={{ fontSize: "32px", fontWeight: "800", color: "#050a14" }}>V</span>
+                </div>
+                <h1 className="premium-title">NovaVault</h1>
+                <p style={{ marginTop: "10px", fontSize: "1.1rem" }}>
+                    Account Security Enhancement
+                </p>
+            </div>
+
             <div className="glass-card">
-                <h3 className="text-center mb-4">Reset Password</h3>
+                <h3>Credential Update</h3>
+                <p style={{ textAlign: "center", marginBottom: "30px", fontSize: "0.9rem", opacity: 0.8 }}>
+                    Please establish a new decryption key for your vault.
+                </p>
 
                 {loading ? (
                     <div className="text-center">
-                        <div className="spinner-border text-light" role="status">
+                        <div className="spinner-border" role="status">
                             <span className="visually-hidden">Loading...</span>
                         </div>
-                        <p className="mt-2">Verifying token...</p>
+                        <p className="mt-3" style={{ fontSize: "0.9rem", color: "#c5a059" }}>Verifying security token...</p>
                     </div>
                 ) : isValid ? (
                     <>
                         <form onSubmit={handleSubmit}>
-                            <div className="mb-3">
+                            <div className="mb-4">
                                 <input
                                     type="password"
                                     className="form-control"
-                                    placeholder="Enter new password"
+                                    placeholder="New Decryption Key"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
                                 />
                             </div>
-                            <button className="btn glass-btn w-100">Reset Password</button>
+                            <button className="btn glass-btn w-100">Rotate Credentials</button>
                         </form>
-                        {message && <p className="text-center mt-3">{message}</p>}
+                        {message && <p className="text-center mt-4" style={{ fontSize: "0.9rem", color: "#c5a059" }}>{message}</p>}
                     </>
                 ) : (
                     <div className="text-center">
-                        <p className="text-danger" style={{ fontWeight: "bold" }}>{message}</p>
-                        <Link to="/" className="btn glass-btn mt-2">Go to Forgot Password</Link>
+                        <p style={{ fontWeight: "600", color: "#ff4d4d", marginBottom: "20px" }}>{message}</p>
+                        <Link to="/" className="btn glass-btn w-100">Return to Recovery</Link>
                     </div>
                 )}
             </div>
         </div>
     );
-
 }
 
 export default ResetPassword;

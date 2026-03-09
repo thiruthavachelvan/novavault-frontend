@@ -24,104 +24,62 @@ function Login() {
 
     return (
         <div className="center-wrapper">
-            <div
-                style={{
-                    textAlign: "center",
-                    marginBottom: "25px",
-                    color: "white"
-                }}
-            >
-                <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        gap: "12px"
-                    }}
-                >
-                    <span style={{ fontSize: "30px" }}>🚀</span>
-                    <h1
-                        style={{
-                            fontWeight: "700",
-                            letterSpacing: "1px",
-                            margin: 0,
-                            color: "#ffffff",
-                            textAlign: "center",
-                            textShadow: "0 3px 15px rgba(0,0,0,0.4)"
-                        }}
-                    >
-                        NovaVault
-                    </h1>
+            <div className="logo-container">
+                <div className="logo-glow">
+                    <span style={{ fontSize: "32px", fontWeight: "800", color: "#050a14" }}>V</span>
                 </div>
+                <h1 className="premium-title">NovaVault</h1>
+                <p style={{ marginTop: "10px", fontSize: "1.1rem" }}>
+                    Secure Digital Asset Management
+                </p>
             </div>
 
             <div className="glass-card">
-                <h2
-                    style={{
-                        color: "#ffffff",
-                        fontWeight: "700",
-                        textAlign: "center",
-                        marginBottom: "20px",
-                        textShadow: "0 3px 15px rgba(0,0,0,0.4)"
-                    }}
-                >
-                    Login
-                </h2>
+                <h2>Authentication</h2>
+                <p style={{ textAlign: "center", marginBottom: "30px", fontSize: "0.95rem" }}>
+                    Please enter your credentials to access your vault.
+                </p>
 
                 <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
+                    <div className="mb-4">
                         <input
                             type="email"
                             className="form-control"
-                            placeholder="Email"
+                            placeholder="Email address"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            style={{
-                                background: "rgba(255,255,255,0.15)",
-                                border: "1px solid rgba(255,255,255,0.3)",
-                                color: "#ffffff",
-                                borderRadius: "10px",
-                                padding: "12px"
-                            }}
                         />
                     </div>
 
-                    <div className="mb-3">
+                    <div className="mb-4">
                         <input
                             type="password"
                             className="form-control"
-                            placeholder="Password"
+                            placeholder="Decryption Key"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            style={{
-                                background: "rgba(255,255,255,0.15)",
-                                border: "1px solid rgba(255,255,255,0.3)",
-                                color: "#ffffff",
-                                borderRadius: "10px",
-                                padding: "12px"
-                            }}
                         />
                     </div>
 
                     <button className="btn glass-btn w-100">
-                        Login
+                        Authenticate
                     </button>
                 </form>
 
                 {message && (
-                    <div className="text-center mt-3" style={{ color: "white" }}>
+                    <div className="text-center mt-3" style={{ color: "#c5a059", fontSize: "0.9rem" }}>
                         <p>{message}</p>
                     </div>
                 )}
 
-                <div className="text-center mt-3" style={{ color: "white" }}>
-                    <p>
-                        <Link to="/" style={{ color: "#ffffff", fontWeight: "bold" }}>Forgot Password?</Link>
+                <div className="mt-5 pt-3" style={{ borderTop: "1px solid rgba(197, 160, 89, 0.1)", textAlign: "center" }}>
+                    <p style={{ fontSize: "0.85rem", marginBottom: "10px" }}>
+                        <Link to="/">Lost access? Recover account</Link>
                     </p>
-                    <p>
-                        Don't have an account? <Link to="/register" style={{ color: "#ffffff", fontWeight: "bold" }}>Register here</Link>
+                    <p style={{ fontSize: "0.85rem" }}>
+                        Unauthorized? <Link to="/register">Create Account</Link>
                     </p>
                 </div>
             </div>
